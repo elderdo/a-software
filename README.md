@@ -8,12 +8,12 @@ Generally software factory tools are accessed via a web browser. They can be ins
 
 | Tool Name                                                    | Capability                                                              | Notes			                                      |
 | ------------------------------------------------------------ | ----------------------------------------------------------------------- | ------------------------------------------------------ |
-| [Aqua](https://www.aquasec.com/)                             | Nexus IQ Vulnerability Scanning			                         	 |														  |
+| [Aqua](https://www.aquasec.com/)                             | Container Vulnerability Scanning			                         	 |														  |
 | [Collaborator](https://smartbear.com/product/collaborator/)  | Formal Peer Review                     				                 | 						    							  |
 | [GitLab](https://about.gitlab.com)                           | CM/Version Control, CI/CD, Code Review, wiki, Rqmts Mgmt & Traceability | Jira/bitbucket/confluence/jenkins replacement          |
 | [Mattermost](https://mattermost.com/)                        | Collaboration/ChatOps                                                   |                                                        |
 | [Nexus](https://www.sonatype.com/products/nexus-repository)  | Build Artifact/Package Manager                                          |                                                        |
-| [Nexus IQ](https://help.sonatype.com/iqserver)               | Vulnerability Scanning    (for CI/CD lifecycle                          |                                                        |
+| [Nexus IQ](https://help.sonatype.com/iqserver)               | Vulnerability Scanning (for entire CI/CD lifecycle)                          |                                                        |
 | [PlantUML](https://plantuml.com/)                            | UML diagrams                                                            |                                                        |
 | [SonarQube](https://www.sonarsource.com/products/sonarqube/) | Static Code Analysis                                                    |                                                        |
 | [Polyspace](https://au.mathworks.com/products/polyspace.html)| Static Code Analysis                                                    |                                                        |
@@ -32,7 +32,7 @@ These are tools that a developer/user would install on their workstation.
 | [Eclipse](https://www.eclipse.org/downloads/)                | IDE                                                    |                                                        |
 | [draw.io](https://www.diagrams.net/)                         | Diagramming                                            |                                                        |
 | [Linux](https://en.wikipedia.org/wiki/Linux)                 | OS                                                     | generally rpm based such as RedHat/Oracle Linux / Amazon Linux | 
-| [Docker](https://www.docker.com/), [Podman](https://podman.io/) / [Buildah](https://buildah.io/) /[Skopeo](https://github.com/containers/skopeo) | Containerization | Docker is fine for local usage. Buildah/Podman/Skopeo are recommended for pipelines due to permissions needed. |
+| [Docker](https://www.docker.com/),[Podman](https://podman.io/)/[Buildah](https://buildah.io/)/[Skopeo](https://github.com/containers/skopeo) | Containerization | Docker is fine for local usage. Buildah/Podman/Skopeo are recommended for pipelines due to permissions needed. |
 | [Bazel](https://bazel.build/)                                | Multi-language Build System                            | Cache can be installed on the software factory         |
 | [Marpit](https://marpit.marp.app/) + [draw.io](https://www.diagrams.net/) | Slide Generation                          |                                                        |
 | [Jupyter Notebook](https://jupyter.org/)                     | Collaborative Analysis                                 |                                                        |
