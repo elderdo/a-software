@@ -2,7 +2,7 @@
 
 Below are the Boeing Defence Australia standards for DevSecOps tooling and SDE's. Where possible they align with [Enterprise standards](https://git.web.boeing.com/enterprise-sw-verticals/boeing-software-factory/bsf/-/blob/main/tools.md) to be deployed in software development environments.
 
-Use these tools to improve your teams ability to produce quality software effeciently, securely and consistently by:
+Use these tools to improve your teams ability to produce quality software efficiently, securely and consistently by:
 - Automating everything - Especially testing
 - [Containerising](https://confluenceslt.web.au.boeing.com/pages/viewpage.action?spaceKey=BSE&title=Containerization) - Start small with DevOps pipeline tools then move onto the product itself
 - Performing static code analysis - Understand and remediate vulnerabilities and code quality issues
