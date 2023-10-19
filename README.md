@@ -43,3 +43,28 @@ These are tools that a developer/user would install on their workstation.
 | [Bazel](https://bazel.build/)                                | Multi-language Build System                            | Cache can be installed on the software factory         |
 | [Marpit](https://marpit.marp.app/) + [draw.io](https://www.diagrams.net/) | Slide Generation                          |                                                        |
 | [Jupyter Notebook](https://jupyter.org/)                     | Collaborative Analysis                                 |                                                        |
+
+## Software Design best practices
+name | link | notes
+--|--|--|
+Boeing DP | https://boeingdesignpractices.web.boeing.com/design_practice/view/18033973353374866906?status=Approved |
+Boeing Playbooks  | https://playbooks.web.boeing.com/wiki/DP:Enterprise_Software_Design_Practice  
+Boeing Software Security Requirements | https://besweb.web.boeing.com/Search/ISFindIt?aid=58
+
+## Software supply chain best practices
+
+name | link | notes
+--|--|--|
+Boeing playbooks | https://playbooks.web.boeing.com/wiki/DP:Software_Build_and_Integration_DP_Page
+CNCF supply chain management | https://github.com/cncf/tag-security/blob/main/supply-chain-security/supply-chain-security-paper/sscsp.md#securing-materials  
+Google Supply chain management | https://cloud.google.com/resources/delivering-software-securely
+Google cloud supply chain management | https://cloud.google.com/software-supply-chain-security/docs/dependencies
+
+## container best practices
+name | link | notes
+--|--|--|
+Dod container hardening | https://software.af.mil/wp-content/uploads/2020/10/Final-DevSecOps-Enterprise-Container-Hardening-Guide-1.1-Public-Release.pdf
+google building containers best practices| https://cloud.google.com/architecture/best-practices-for-building-containers 
+ISM Guidelines for System Hardening| https://www.cyber.gov.au/resources-business-and-government/essential-cyber-security/ism/cyber-security-guidelines/guidelines-system-hardening |  The ISM refers to NIST for further information about container security.  See NIST.SP.800-190 below for further details.  
+NIST.SP.800-190 - Application Container Security Guide | https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-190.pdf
+
