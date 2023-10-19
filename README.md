@@ -51,6 +51,7 @@ These are tools that a developer/user would install on their workstation.
 | Boeing DP | <https://boeingdesignpractices.web.boeing.com/design_practice/view/18033973353374866906?status=Approved> |
 | Boeing Playbooks  | <https://playbooks.web.boeing.com/wiki/DP:Enterprise_Software_Design_Practice> |
 | Boeing Software Security Requirements | <https://besweb.web.boeing.com/Search/ISFindIt?aid=58> |
+| Nist - Secure Software Development Framework (SSDF)| <https://csrc.nist.gov/pubs/sp/800/218/final> |
 
 ## Software supply chain best practices
 
