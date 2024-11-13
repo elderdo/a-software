@@ -1,0 +1,17 @@
+stages:
+  - test
+
+megalinter:
+  stage: test
+  image: sres.web.boeing.com:5000/oxsecurity/megalinter-documentation:v8.1.0
+  variables:
+    HTTPS_PROXY: http://www-proxy.web.boeing.com:31060
+    HTTP_PROXY: http://www-proxy.web.boeing.com:31060
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
+    SPELL_LYCHEE_ARGUMENTS: --exclude '/-/raw/[^/]+/$' --exclude boeing\.com --timeout 60 
+    ENABLE: SPELL,MARKDOWN
+    DISABLE_LINTERS: REPOSITORY_TRUFFLEHOG,REPOSITORY_DEVSKIM,MARKDOWN_MARKDOWN_LINK_CHECK
+
+  script:
+    - "/bin/bash /entrypoint.sh"
+    
