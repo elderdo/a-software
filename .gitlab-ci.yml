@@ -82,4 +82,4 @@ pages:
         - requirements.txt
         - .gitlab-ci.yml
       variables:
-        PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID' # Prefix with the mr-<iid>, like `mr-123`
+        PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID' # Prefix with the mr-<iid>, i.e. `mr-123`
