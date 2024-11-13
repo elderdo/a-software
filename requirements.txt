@@ -1,0 +1,8 @@
+# Core MkDocs packages
+mkdocs>=1.6.1
+mkdocs-material>=9.5.42
+
+# Plugins for specific features
+mkdocs-multirepo-plugin  # Combine documentation from multiple repositories
+mkdocs-include-markdown-plugin # lets you embed external Markdown files directly into your docs
+# mkdocs-awesome-pages-plugin # Automatically generate the navigatio

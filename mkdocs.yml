@@ -1,0 +1,45 @@
+site_name: BDA Software
+theme:
+  name: material
+  palette:
+    primary: teal
+  palette:
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: blue
+
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: blue
+     
+  features:
+    - navigation.tabs
+
+docs_dir: docs # This sets the documentation directory to the root
+
+# Plugins
+plugins:
+  - search
+  - include-markdown
+  # https://github.com/jdoiro3/mkdocs-multirepo-plugin
+  # - multirepo:
+  #     cleanup: true
+  #     keep_docs_dir: true
+  #     nav_repos:
+  #       - name: kubernetes-docs
+  #         import_url: https://github.com/kubernetes/website/?branch=main&edit_uri=/blob/main/
+  #         imports: [
+  #           /README.md
+  #         ]
+nav:
+  - Home: index.md
+  - Resources:
+    - resources.md
+    #- kubernetes-docs/README.md
+  - About This Page: about.md

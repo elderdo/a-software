@@ -1,5 +1,31 @@
-stages:
+---
+
+# Enforce standard workflow for all pipelines
+workflow:
+  rules:
+    # allow running schedule pipeline for any ref
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    # switch from branch pipelines to merge request pipelines when a merge request is created
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_PIPELINE_SOURCE == "push"
+      when: never
+    # run MR pipeline
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # dont run branch pipeline when MR is open
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    # if no open MR, run branch pipeline
+    - if: $CI_COMMIT_BRANCH
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
   - test
+  - deploy
+
+include:
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+  #- template: Security/Container-Scanning.gitlab-ci.yml
 
 megalinter:
   stage: test
@@ -14,4 +40,46 @@ megalinter:
 
   script:
     - "/bin/bash /entrypoint.sh"
-    
+  
+# https://docs.gitlab.com/ee/user/project/pages/index.html#parallel-deployments  
+pages:
+  stage: deploy
+  image: sres.web.boeing.com:5000/python:3.13
+  variables:
+    PAGES_PREFIX: "" # No prefix by default
+  pages:
+    path_prefix: "$PAGES_PREFIX" # Use whatever value is set in the variable
+  script:
+    - export ENV PIP_INDEX_URL="https://${API_KEY}@sres.web.boeing.com/artifactory/api/pypi/pypi-releases/simple"
+    - python3 -m venv venv  # Create a virtual environment
+    - source venv/bin/activate  # Activate the virtual environment
+    - pip install --trusted-host sres.web.boeing.com --upgrade pip  # Upgrade pip to the latest version
+    - pip install --trusted-host sres.web.boeing.com -r requirements.txt
+    - mkdocs build --site-dir public --no-directory-urls
+
+  environment:
+    name: "BDA Software ${PAGES_PREFIX}"
+    url: "${CI_PAGES_URL}/${PAGES_PREFIX}" # To make this Static set via settings uncheck use unique domain.
+
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH # Run on default branch (with default PAGES_PREFIX)
+      changes:
+        - README.md
+        - docs/**/*
+        - mkdocs.yml
+        - requirements.txt
+        - .gitlab-ci.yml
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" # Conditionally change the prefix for Merge Requests
+      changes:
+        - README.md
+        - docs/**/*
+        - mkdocs.yml
+        - requirements.txt
+        - .gitlab-ci.yml
+      variables:
+        PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID' # Prefix with the mr-<iid>, like `mr-123`
