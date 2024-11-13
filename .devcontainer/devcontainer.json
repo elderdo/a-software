@@ -1,0 +1,25 @@
+{
+    "name": "dynamic-gitlab-docs",
+    "image": "sres.web.boeing.com:5000/python:3.13",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "streetsidesoftware.code-spell-checker",
+          "davidanson.vscode-markdownlint"
+        ],
+        "settings": {
+          "terminal.integrated.shell.linux": "/bin/bash"
+        }
+      }
+    },
+    "postCreateCommand": "echo 'Hello from dev container!' && chmod +x ./setup.sh && ./setup.sh",
+  
+    "forwardPorts": [
+      8000
+    ],
+    "runArgs": [
+      "--env-file",
+      "${localWorkspaceFolder}/.env"
+    ]
+  }
+  
