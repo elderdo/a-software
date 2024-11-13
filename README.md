@@ -1,73 +1,110 @@
-# bda-devsecops-standards
+# Boeing Defence Australia DevSecOps Standards
 
-Below are the Boeing Defence Australia standards for DevSecOps tooling and SDE's. Where possible they align with [Enterprise standards](https://git.web.boeing.com/enterprise-sw-verticals/boeing-software-factory/bsf/-/blob/main/tools.md) to be deployed in software development environments.
+This document outlines the Boeing Defence Australia standards for DevSecOps tooling and Software Development Environments. Where possible, these standards align with [Enterprise standards](https://git.web.boeing.com/enterprise-sw-verticals/boeing-software-factory/bsf/-/blob/main/tools.md) for deployment in software development environments.
 
-Use these tools to improve your teams ability to produce quality software efficiently, securely and consistently by:
+The information below presents key DevSecOps practices and standards designed to assist your team in building secure, high-quality software efficiently and consistently. It incorporates GitLab's definition of [DevOps](https://about.gitlab.com/topics/devops/), emphasizing the importance of automation, collaboration, continuous improvement, and a user-focused approach.
 
-- Automating everything - Especially testing
-- [Containerization](https://confluenceslt.web.au.boeing.com/pages/viewpage.action?spaceKey=BSE&title=Containerization) - Start small with DevOps pipeline tools then move onto the product itself
-- Performing static code analysis - Understand and remediate vulnerabilities and code quality issues
-- Ensure you have test coverage analysis and >80% of your code base is covered
-- Use dependency analysis to understand what makes up your product - Licenses, vulnerabilities, updates and the ability to produce SBOMs easily
+By adhering to these standards, your team can enhance its ability to produce quality software that meets security requirements while maintaining efficiency and consistency.
+
+**Core Principles:**
+
+* **Automation:** Automate everything possible, especially testing. This accelerates development, reduces human error, and ensures consistency.
+* **[Containerization](https://confluenceslt.web.au.boeing.com/pages/viewpage.action?spaceKey=BSE&title=Containerization):** Adopt containerization for your DevSecOps pipeline tools and, eventually, the product itself. This improves portability, scalability, and consistency across environments.
+* **Static Code Analysis:** Integrate static code analysis tools to identify vulnerabilities and code quality issues early in the development lifecycle.
+* **Test Coverage Analysis:**  Strive for comprehensive test coverage (aim for over 80%) to ensure the functionality and reliability of your codebase.
+* **Dependency Analysis:**  Understand your software's dependencies. Analyze licenses, known vulnerabilities, and available updates. Ensure you can easily generate a Software Bill of Materials (SBOM).
+
+**Key Focus Areas:**
+
+* **Collaboration and Communication:** Foster a culture of open communication and collaboration between development, security, and operations teams. Utilize tools and platforms that facilitate seamless information sharing and feedback loops.
+* **Continuous Improvement:**  Embrace a mindset of continuous improvement. Regularly review and optimize your processes, tools, and technologies to enhance efficiency and effectiveness.
+* **User Focus:**  Prioritize user needs and feedback throughout the development lifecycle.  Implement short feedback loops to ensure that the software meets user expectations and delivers value.
+
+**Benefits:**
+
+By implementing these practices, your team can:
+
+* **Increase development speed and efficiency:** Automation and containerization streamline the development process.
+* **Enhance software quality:**  Testing and code analysis ensure high-quality, reliable code.
+* **Improve security:**  Early vulnerability detection and remediation through static analysis and dependency checks build security into the development lifecycle.
+* **Increase transparency and collaboration:**  Clear standards and automated processes foster better communication and collaboration within the team.
+
+**Getting Started:**
+
+Start by gradually integrating these practices into your existing workflow. Focus on automating key processes, adopting containerization for your tools, and implementing robust testing and code analysis. Encourage collaboration, prioritize user feedback, and continuously seek ways to improve your processes.
+
+If your project does not involve ITAR (International Traffic in Arms Regulations) and consists solely of Boeing Proprietary Data data types, you should utilize the [Boeing Software Factory](https://bsf.web.boeing.com/) for your development needs. This platform provides a streamlined environment tailored for such projects, ensuring compliance and efficiency in your software development process.
 
 ## Software Factory Core Tools
 
-Generally software factory tools are accessed by users via a web browser. They can be installed via helm charts into a kubernetes cluster.
+Core DevSecOps tools, such as GitLab, are essential for facilitating collaboration, automation, and continuous integration and delivery (CI/CD) within software development teams.
 
 | Tool Name | Capability | Notes| FM1115 exists | ESATS |
 | ----------| -----------|------| --------------| ------|
-| [Prisma](https://www.paloaltonetworks.com/prisma/cloud/container-security)| Container Vulnerability Scanning  | Enterprise discount may be available - [Mattermost](https://mattermost.web.boeing.com/devhub/channels/container_security) & [Boeing site](https://dev-sec-docs.web.boeing.com/prisma/) | No | [link](https://esats.web.boeing.com/technologyproduct/product/3598365) |
-| [Collaborator](https://smartbear.com/product/collaborator/) | Formal Peer Review | Free and paid versions available - Enterprise discount may be available | Yes (E7, WSE) | [link](https://esats.web.boeing.com/technologyproduct/product/3582768) |
-| [GitLab](https://about.gitlab.com) | CM/Version Control, CI/CD, Code Review, wiki, Rqmts Mgmt & Traceability | Free and paid versions available - Enterprise license available - Replaces Bitbucket/Jenkins/Bamboo/JIRA - [Mattermost](https://mattermost.web.boeing.com/devhub/channels/gitlab) & [Boeing docs](https://git.web.boeing.com/gitlab/gitlab/-/blob/main/README.md) & [Enterprise Licensing](https://git.web.boeing.com/gitlab/license-management/gitlablicensemanagement) | Yes (WSE) | [link](https://esats.web.boeing.com/technologyproduct/product/46695)  |
-| [Mattermost](https://mattermost.com/) | Collaboration/ChatOps | Free and paid versions available - Gitlab integration avoids most needs for paid versions - [Mattermost](https://mattermost.web.boeing.com/devhub/channels/mm) & [Boeing docs](https://mattermost.pages.boeing.com/) | Yes (Wakulda, Currawong, E7, WSE)	| [link](https://esats.web.boeing.com/technologyproduct/product/90665) |
-| [Nexus](https://www.sonatype.com/products/nexus-repository) | Build Artifact/Package Manager | Free and paid versions available - Enterprise discount may be available | Yes (WSE, Wakulda) | [link](https://esats.web.boeing.com/technologyproduct/product/3496098)
-| [Nexus IQ](https://help.sonatype.com/iqserver) | Vulnerability Scanning & Composition Analysis (for entire CI/CD lifecycle)| Enterprise discount may be available | No | [link](https://esats.web.boeing.com/technologyproduct/product/3496098)|
-| [PlantUML](https://plantuml.com/) | UML diagrams | Open source| No | [link](https://esats.web.boeing.com/technologyproduct/product/3555929)|
+| [Coverity](https://scan.coverity.com/) | Static Code Analysis | Enterprise license available - [Mattermost](https://mattermost.web.boeing.com/devhub/channels/coverity) & [Boeing docs](https://dev-sec-docs.web.boeing.com/coverity-overview/) & [Enterprise Licensing](https://infosec.web.boeing.com/Search/ISFindit.aspx?tid=2791) | Yes (E7, WSE) | [link](https://esats.web.boeing.com/technologyproduct/product/3494134)|
+| [GitLab](https://about.gitlab.com) | Configuration Management, Version Control System, CI/CD, code review, wikis, requirements management, and SBOM generation for supply chain security. Includes SAST, DAST, and collaboration tools like issue tracking, epics, and scaled agile planning. | Free and paid versions available - Enterprise license available - Replaces Bitbucket/Jenkins/Bamboo/JIRA - [Mattermost](https://mattermost.web.boeing.com/devhub/channels/gitlab) & [Boeing docs](https://git.web.boeing.com/gitlab/gitlab/-/blob/main/README.md) & [Enterprise Licensing](https://git.web.boeing.com/gitlab/license-management/gitlablicensemanagement) | Yes (WSE) | [link](https://esats.web.boeing.com/technologyproduct/product/46695)  |
+| [Grafana](https://grafana.com/) | Open-source analytics and monitoring platform | Open source | No | [link](https://satrn.web.boeing.com/#/productdetails/3522224) |
+| [JupyterHub](https://jupyter.org/hub) | Multi-user Jupyter Notebook server | Open source | No | [link](https://satrn.web.boeing.com/#/productdetails/3612823) |
+| [Kroki](https://kroki.io/) | Diagram generation from text, including PlantUML | Open source | No | |
+| [Mattermost](https://mattermost.com/) | Collaboration/ChatOps | Free and paid versions available - Gitlab integration avoids most needs for paid versions - [Mattermost](https://mattermost.web.boeing.com/devhub/channels/mm) & [Boeing docs](https://mattermost.pages.boeing.com/) | Yes (Wakulda, Currawong, E7, WSE) | [link](https://esats.web.boeing.com/technologyproduct/product/90665) |
+| [Nexus](https://www.sonatype.com/products/nexus-repository) | Build Artifact/Package Manager | To be replaced by [Artifactory](https://jfrog.com/artifactory/) | Yes (WSE, Wakulda) | [link](https://esats.web.boeing.com/technologyproduct/product/3496098) |
+| [Nexus IQ](https://help.sonatype.com/iqserver) | Vulnerability Scanning & Composition Analysis (for entire CI/CD lifecycle)| To be replaced by [Artifactory](https://jfrog.com/artifactory/) | No | [link](https://esats.web.boeing.com/technologyproduct/product/3496098)|
+| [NeuVector](https://open-docs.neuvector.com/) | Container Vulnerability Scanning, Runtime Protection, Network Segmentation, and Compliance Monitoring for containerized applications | Open Source | No | [link](https://satrn.web.boeing.com/#/productdetails/3650301) |
 | [SonarQube](https://www.sonarsource.com/products/sonarqube/) | Static Code Analysis | Free and paid versions available - Enterprise discount may be available | Yes (Wakulda, Currawong) | [link](https://esats.web.boeing.com/technologyproduct/product/55323)|
 | [Polyspace](https://au.mathworks.com/products/polyspace.html)| Static Code Analysis for safety critical applications || No | [link](https://esats.web.boeing.com/technologyproduct/product/3572426) [link](https://esats.web.boeing.com/technologyproduct/product/3572431)|
-| [Coverity](https://scan.coverity.com/) | Static Code Analysis | Enterprise license available - [Mattermost](https://mattermost.web.boeing.com/devhub/channels/coverity) & [Boeing docs](https://dev-sec-docs.web.boeing.com/coverity-overview/) & [Enterprise Licensing](https://infosec.web.boeing.com/Search/ISFindit.aspx?tid=2791) | Yes (E7, WSE) | [link](https://esats.web.boeing.com/technologyproduct/product/3494134)|
-| [VectorCAST](https://www.vector.com/int/en/products/products-a-z/software/vectorcast/#) | MC/DC Coverage & Unit Test including safety critical applications | | No | [link](https://esats.web.boeing.com/technologyproduct/product/3536963)|
+| [VectorCAST](https://www.vector.com/int/en/products/products-a-z/software/vectorcast/) | MC/DC Coverage & Unit Test including safety critical applications | | No | [link](https://esats.web.boeing.com/technologyproduct/product/3536963)|
 
-## workstation Core Tools
+## Workstation Core Tools
 
-These are tools that a developer/user would install on their workstation.
+Workstation Core Tools are essential applications that developers and users install on their local machines to enhance productivity and streamline the software development process. These tools support various tasks, including coding, debugging, diagramming, and collaboration, enabling teams to work efficiently and effectively in their development environments.
 
 | Tool Name                                                    | Capability                                             | Notes                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| [Mattermost Desktop](https://mattermost.com/apps/)           | Messaging                                              |                                                        |
-| [VS Code](https://code.visualstudio.com/)                    | IDE                                                    |                                                        |
-| [Eclipse](https://www.eclipse.org/downloads/)                | IDE                                                    |                                                        |
-| [draw.io](https://www.diagrams.net/)                         | Diagramming                                            |                                                        |
-| [Linux](https://en.wikipedia.org/wiki/Linux)                 | OS                                                     | Generally rpm based such as RedHat/Oracle Linux / Amazon Linux | 
-| [Docker](https://www.docker.com/),[Podman](https://podman.io/)/[Buildah](https://buildah.io/)/[Skopeo](https://github.com/containers/skopeo)/[Kaniko](https://github.com/GoogleContainerTools/kaniko) | Containerization | Docker is fine for local usage. Buildah/Podman/Skopeo/[Kaniko](https://docs.gitlab.com/ee/ci/docker/using_kaniko.html) are recommended for pipelines due to permissions needed. |
 | [Bazel](https://bazel.build/)                                | Multi-language Build System                            | Cache can be installed on the software factory         |
-| [Marpit](https://marpit.marp.app/) + [draw.io](https://www.diagrams.net/) | Slide Generation                          |                                                        |
+| [Docker](https://www.docker.com/),[Podman](https://podman.io/)/[Buildah](https://buildah.io/)/[Skopeo](https://github.com/containers/skopeo)/[Kaniko](https://github.com/GoogleContainerTools/kaniko) | Containerization | Docker is fine for local usage. Buildah/Podman/Skopeo/[Kaniko](https://docs.gitlab.com/ee/ci/docker/using_kaniko.html) are recommended for pipelines due to permissions needed. |
+| [Draw.io](https://www.diagrams.net/)                         | Diagramming                                            |                                                        |
 | [Jupyter Notebook](https://jupyter.org/)                     | Collaborative Analysis                                 |                                                        |
+| [Linux](https://en.wikipedia.org/wiki/Linux)                 | OS                                                     | Generally rpm based such as RedHat/Oracle Linux / Amazon Linux |
+| [Marpit](https://marpit.marp.app/) + [draw.io](https://www.diagrams.net/) | Slide Generation                          |                                                        |
+| [Mattermost Desktop](https://mattermost.com/apps/)           | Messaging                                              |                                                        |
+| [Visual Studio Code](https://code.visualstudio.com/)                    | IDE                                                    |                                                        |
 
-## Software Design best practices
+## Resources and Best Practices
 
-| name | link | notes |
-| ---- | ---- | ----- |
-| Boeing DP | <https://boeingdesignpractices.web.boeing.com/design_practice/view/18033973353374866906?status=Approved> |
-| Boeing PB Software Design Practice  | <https://playbooks.web.boeing.com/wiki/DP:Enterprise_Software_Design_Practice> |
-| Boeing PB Product Security | https://playbooks.web.boeing.com/wiki/DP:Product_Security |
-| Boeing Software Security Requirements | <https://besweb.web.boeing.com/Search/ISFindIt?aid=58> |
-| Nist - Secure Software Development Framework (SSDF)| <https://csrc.nist.gov/pubs/sp/800/218/final> |
+Adhering to established best practices is crucial for ensuring the security, quality, and efficiency of software development processes. The following resources provide valuable guidance and insights into various aspects of software design, DevSecOps, software supply chain management, and containerization. Explore these links to enhance your understanding and implementation of best practices in your projects.
 
-## Software supply chain best practices
+### Software Design Best Practices
 
 | name | link | notes |
 | ---- | ---- | ----- |
-| Boeing playbooks | <https://playbooks.web.boeing.com/wiki/DP:Software_Build_and_Integration_DP_Page> |
-| CNCF supply chain management | <https://github.com/cncf/tag-security/blob/main/supply-chain-security/supply-chain-security-paper/sscsp.md#securing-materials>  |
-| Google Supply chain management | <https://cloud.google.com/resources/delivering-software-securely> |
-| Google cloud supply chain management | <https://cloud.google.com/software-supply-chain-security/docs/dependencies> |
+| Boeing DP | <https://boeingdesignpractices.web.boeing.com/design_practice/view/18033973353374866906?status=Approved> | |
+| Boeing PB Software Design Practice  | <https://playbooks.web.boeing.com/wiki/DP:Enterprise_Software_Design_Practice> | |
+| Boeing PB Product Security | <https://playbooks.web.boeing.com/wiki/DP:Product_Security> | |
+| Boeing Software Security Requirements | <https://besweb.web.boeing.com/Search/ISFindIt?aid=58> | |
+| Nist - Secure Software Development Framework (SSDF)| <https://csrc.nist.gov/pubs/sp/800/218/final> | |
 
-## container best practices
+### DevSecOps Best Practices
 
 | name | link | notes |
 | ---- | ---- | ----- |
-| Dod container hardening | <https://software.af.mil/wp-content/uploads/2020/10/Final-DevSecOps-Enterprise-Container-Hardening-Guide-1.1-Public-Release.pdf> |
-| google building containers best practices| <https://cloud.google.com/architecture/best-practices-for-building-containers> |
-| ISM Guidelines for System Hardening| <https://www.cyber.gov.au/resources-business-and-government/essential-cyber-security/ism/cyber-security-guidelines/guidelines-system-hardening> |  The ISM refers to NIST for further information about container security.  See NIST.SP.800-190 below for further details.  
-| NIST.SP.800-190 - Application Container Security Guide | <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-190.pdf>
+| GitLab DevOps | <https://about.gitlab.com/topics/devops/> | |
+| Microsoft What is DevOps | <https://www.microsoft.com/en-au/security/business/security-101/what-is-devsecops> | |
+| NIST Cyber Security Framework | <https://www.nist.gov/cyberframework> | |
+
+### Software Supply Chain Best Practices
+
+| name | link | notes |
+| ---- | ---- | ----- |
+| Boeing playbooks | <https://playbooks.web.boeing.com/wiki/DP:Software_Build_and_Integration_DP_Page> | |
+| CNCF supply chain management | <https://github.com/cncf/tag-security/tree/main?tab=readme-ov-file>  | |
+| Google Supply chain management | <https://cloud.google.com/resources/delivering-software-securely> | |
+| Google cloud supply chain management | <https://cloud.google.com/software-supply-chain-security/docs/dependencies> | |
+
+### Container Best Practices
+
+| name | link | notes |
+| ---- | ---- | ----- |
+| Dod container hardening | <https://software.af.mil/wp-content/uploads/2020/10/Final-DevSecOps-Enterprise-Container-Hardening-Guide-1.1-Public-Release.pdf> | |
+| Google building containers best practices| <https://cloud.google.com/architecture/best-practices-for-building-containers> | |
+| ISM Guidelines for System Hardening| <https://www.cyber.gov.au/resources-business-and-government/essential-cyber-security/ism/cyber-security-guidelines/guidelines-system-hardening> |  The ISM refers to NIST for further information about container security.  See NIST.SP.800-190 below for further details. |
+| NIST.SP.800-190 - Application Container Security Guide | <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-190.pdf> | |

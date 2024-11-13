@@ -1,0 +1,37 @@
+{
+    "words": [
+        "githubusercontent",
+        "streetsidesoftware",
+        "vsmarketplacebadge",
+        "visualstudio",
+        "trufflehog",
+        "devskim",
+        "mkdocs",
+        "mkdocs-material",
+        "multirepo",
+        "venv",
+        "CNCF",
+        "Defence",
+        "ESATS",
+        "Currawong",
+        "Wakulda",
+        "Coverity",
+        "Buildah",
+        "Kaniko",
+        "Bazel",
+        "Marpit",
+        "SSDF",
+        "Skopeo",
+        "SonarQube",
+        "Polyspace",
+        "FM1115",
+        "ITAR",
+        "Kroki"
+    ],
+    "ignorePaths": [
+        ".gitlab-ci.yml",
+        "requirements.txt",
+        "mkdocs.yml",
+        ".devcontainer/devcontainer.json"
+    ]
+}
