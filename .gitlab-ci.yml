@@ -59,7 +59,7 @@ pages:
 
   environment:
     name: "BDA Software ${PAGES_PREFIX}"
-    url: "${CI_PAGES_URL}/${PAGES_PREFIX}" # To make this Static set via settings uncheck use unique domain.
+    url: "${BDA_PAGES_URL}/${PAGES_PREFIX}" # To make this Static set via settings uncheck use unique domain.
 
   artifacts:
     paths:
@@ -82,4 +82,4 @@ pages:
         - requirements.txt
         - .gitlab-ci.yml
       variables:
-        PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID' # Prefix with the mr-<iid>, i.e. `mr-123`
+        PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID' # Prefix with the mr-<iid>, for example `mr-123`
