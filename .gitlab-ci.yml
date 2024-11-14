@@ -21,12 +21,6 @@ stages:          # List of stages for jobs, and their order of execution
   - test
   - deploy
 
-include:
-  - template: Security/Dependency-Scanning.gitlab-ci.yml
-  - template: Security/SAST.gitlab-ci.yml
-  - template: Security/Secret-Detection.gitlab-ci.yml
-  #- template: Security/Container-Scanning.gitlab-ci.yml
-
 megalinter:
   stage: test
   image: sres.web.boeing.com:5000/oxsecurity/megalinter-documentation:v8.1.0
