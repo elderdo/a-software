@@ -6,3 +6,6 @@ mkdocs-material>=9.5.42
 mkdocs-multirepo-plugin  # Combine documentation from multiple repositories
 mkdocs-include-markdown-plugin # lets you embed external Markdown files directly into your docs
 # mkdocs-awesome-pages-plugin # Automatically generate the navigatio
+
+# For testing renovate
+diff==0.6.1
