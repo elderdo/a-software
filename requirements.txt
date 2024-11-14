@@ -8,4 +8,4 @@ mkdocs-include-markdown-plugin # lets you embed external Markdown files directly
 # mkdocs-awesome-pages-plugin # Automatically generate the navigatio
 
 # For testing renovate
-diff==0.6.1
+diff==2023.12.6
