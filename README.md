@@ -59,14 +59,14 @@ git clone https://git.web.boeing.com/bda-software/tools/bda-devsecops-standards.
 
 - Commit your changes to the repository and push them to GitLab.
 - Create a Merge Request in GitLab to merge your changes into the main branch.
-- The CI/CD pipeline will automatically build and deploy your updated documentation to a parallel deployment environment.
+- The CI/CD pipeline will automatically build and test your changes.
 
 **6. View your live documentation and compare:**
 
-- Once the pipeline completes successfully, you can access your documentation in the parallel deployment environment at the URL provided in the pages job output.
-- Compare your changes in the parallel deployment with the live documentation on the main branch.
+- Once the pipeline completes successfully, you can access your documentation by going to the build pages job and browsing the artifacts.
+- Compare your changes with the live documentation on the main branch.
 
 **7. Merge your Merge Request:**
 
 - Once you are satisfied with your changes, merge your Merge Request.
-- This will stop the parallel deployment and trigger a new pipeline to deploy your changes to the live documentation.
+- This will deploy your changes to the live documentation.

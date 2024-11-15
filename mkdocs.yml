@@ -1,4 +1,10 @@
 site_name: BDA Software
+site_description: BDA Software DevSecOps GitLab page
+repo_url: https://git.web.boeing.com/bda-software/tools/bda-devsecops-standards
+repo_name: tools/bda-devsecops-standards
+edit_uri: edit/main/docs/
+copyright: BDA Software
+docs_dir: docs # This sets the documentation directory to the root
 theme:
   name: material
   palette:
@@ -20,8 +26,10 @@ theme:
      
   features:
     - navigation.tabs
+    - content.action.edit
 
-docs_dir: docs # This sets the documentation directory to the root
+  icon:
+    repo: fontawesome/brands/gitlab 
 
 # Plugins
 plugins:
@@ -40,4 +48,16 @@ plugins:
 nav:
   - Home: index.md
   - Resources: resources.md
-  - About This Page: about.md
+  - About: about.md
+ 
+extra:
+  social:
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:BDASoftware@exchange.boeing.com
+    - icon: fontawesome/solid/comments 
+      link: mattermost://mattermost.web.boeing.com/bda-devops/channels/town-square
+    - icon: fontawesome/solid/industry
+      link: https://bsf.web.boeing.com/
+  repository:
+    show_info: true
+    edit_uri: edit/main/docs/  # This is not working

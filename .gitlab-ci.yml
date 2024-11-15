@@ -21,6 +21,21 @@ stages:          # List of stages for jobs, and their order of execution
   - test
   - deploy
 
+build_pages:
+  stage: build
+  image: sres.web.boeing.com:5000/python:3.13
+  script:
+    - export ENV PIP_INDEX_URL="https://${API_KEY}@sres.web.boeing.com/artifactory/api/pypi/pypi-releases/simple"
+    - python3 -m venv venv  # Create a virtual environment
+    - source venv/bin/activate  # Activate the virtual environment
+    - pip install --trusted-host sres.web.boeing.com --upgrade pip  # Upgrade pip to the latest version
+    - pip install --trusted-host sres.web.boeing.com -r requirements.txt
+    - mkdocs build --site-dir public --no-directory-urls
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+
 megalinter:
   stage: test
   image: sres.web.boeing.com:5000/oxsecurity/megalinter-documentation:v8.1.0
@@ -28,14 +43,14 @@ megalinter:
     HTTPS_PROXY: http://www-proxy.web.boeing.com:31060
     HTTP_PROXY: http://www-proxy.web.boeing.com:31060
     DEFAULT_WORKSPACE: $CI_PROJECT_DIR
-    SPELL_LYCHEE_ARGUMENTS: --exclude '/-/raw/[^/]+/$' --exclude boeing\.com --timeout 60 
+    # Skip link checking with --dump
+    SPELL_LYCHEE_ARGUMENTS: --exclude '/-/raw/[^/]+/$' --exclude boeing\.com --timeout 60 --dump
     ENABLE: SPELL,MARKDOWN
     DISABLE_LINTERS: REPOSITORY_TRUFFLEHOG,REPOSITORY_DEVSKIM,MARKDOWN_MARKDOWN_LINK_CHECK
 
   script:
     - "/bin/bash /entrypoint.sh"
   
-# https://docs.gitlab.com/ee/user/project/pages/index.html#parallel-deployments  
 pages:
   stage: deploy
   image: sres.web.boeing.com:5000/python:3.13
@@ -44,13 +59,7 @@ pages:
   pages:
     path_prefix: "$PAGES_PREFIX" # Use whatever value is set in the variable
   script:
-    - export ENV PIP_INDEX_URL="https://${API_KEY}@sres.web.boeing.com/artifactory/api/pypi/pypi-releases/simple"
-    - python3 -m venv venv  # Create a virtual environment
-    - source venv/bin/activate  # Activate the virtual environment
-    - pip install --trusted-host sres.web.boeing.com --upgrade pip  # Upgrade pip to the latest version
-    - pip install --trusted-host sres.web.boeing.com -r requirements.txt
-    - mkdocs build --site-dir public --no-directory-urls
-
+    - echo "Deploying pages..."
   environment:
     name: "BDA Software ${PAGES_PREFIX}"
     url: "${BDA_PAGES_URL}/${PAGES_PREFIX}" # To make this Static set via settings uncheck use unique domain.
@@ -68,12 +77,15 @@ pages:
         - mkdocs.yml
         - requirements.txt
         - .gitlab-ci.yml
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" # Conditionally change the prefix for Merge Requests
-      changes:
-        - README.md
-        - docs/**/*
-        - mkdocs.yml
-        - requirements.txt
-        - .gitlab-ci.yml
-      variables:
-        PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID' # Prefix with the mr-<iid>, for example `mr-123`
+
+    # https://docs.gitlab.com/ee/user/project/pages/index.html#parallel-deployments  
+    # Parallel Deployments not working on Ben GitLab, only run on main.  Uncomment to try again in the future. Enable in deploy -> Pages in UI
+    # - if: $CI_PIPELINE_SOURCE == "merge_request_event" # Conditionally change the prefix for Merge Requests
+    #   changes:
+    #     - README.md
+    #     - docs/**/*
+    #     - mkdocs.yml
+    #     - requirements.txt
+    #     - .gitlab-ci.yml
+    #   variables:
+    #     PAGES_PREFIX: 'mr-$CI_MERGE_REQUEST_IID' # Prefix with the mr-<iid>, for example `mr-123`
