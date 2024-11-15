@@ -53,7 +53,6 @@ megalinter:
   
 pages:
   stage: deploy
-  image: sres.web.boeing.com:5000/python:3.13
   variables:
     PAGES_PREFIX: "" # No prefix by default
   pages:
