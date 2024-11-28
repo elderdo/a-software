@@ -1,7 +1,7 @@
 site_name: BDA Software
-site_description: BDA Software DevSecOps GitLab page
-repo_url: https://git.web.boeing.com/bda-software/tools/bda-devsecops-standards
-repo_name: tools/bda-devsecops-standards
+site_description: BDA Software
+repo_url: https://git.web.boeing.com/bda-software/bda-software
+repo_name: bda-software
 edit_uri: edit/main/docs/
 copyright: BDA Software
 docs_dir: docs # This sets the documentation directory to the root
