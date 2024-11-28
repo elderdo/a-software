@@ -49,6 +49,7 @@
         "mkdocs.yml",
         ".devcontainer/devcontainer.json",
         "public/**",
-        ".markdownlint.json"     
+        ".markdownlint.json",
+             
     ]
 }
