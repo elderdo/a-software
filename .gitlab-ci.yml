@@ -16,7 +16,7 @@ workflow:
     # if no open MR, run branch pipeline
     - if: $CI_COMMIT_BRANCH
 
-stages:          # List of stages for jobs, and their order of execution
+stages:  # List of stages for jobs, and their order of execution
   - lint
   - build
   - test
@@ -41,6 +41,11 @@ build_pages:
   stage: build
   image: sres.web.boeing.com:5000/python:3.13
   script:
+    - curl https://crl.boeing.com/crl/Boeing%20Basic%20Assurance%20Software%20Issuing%20CA%20G3.crt | openssl x509 -inform DER -out /usr/local/share/ca-certificates/Boeing1.pem
+    - curl https://crl.boeing.com/crl/Boeing%20Basic%20Assurance%20Software%20Root%20CA%20G2.crt | openssl x509 -inform DER -out /usr/local/share/ca-certificates/Boeing2.pem
+    - cat /usr/local/share/ca-certificates/Boeing1.pem  /usr/local/share/ca-certificates/Boeing2.pem > /tmp/Boeing.pem
+    - update-ca-certificates
+    - git config --global http.sslCAinfo /tmp/Boeing.pem
     - export ENV PIP_INDEX_URL="https://${API_KEY}@sres.web.boeing.com/artifactory/api/pypi/pypi-releases/simple"
     - python3 -m venv venv  # Create a virtual environment
     - source venv/bin/activate  # Activate the virtual environment

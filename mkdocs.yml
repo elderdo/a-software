@@ -23,33 +23,44 @@ theme:
         icon: material/weather-sunny
         name: Dark mode
       primary: blue
-     
+  
   features:
     - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.tracking
+    - navigation.top
+    - toc.follow
+    
     - content.action.edit
-
   icon:
     repo: fontawesome/brands/gitlab 
 
 # Plugins
 plugins:
   - search
-  - include-markdown
-  # https://github.com/jdoiro3/mkdocs-multirepo-plugin
-  # - multirepo:
-  #     cleanup: true
-  #     keep_docs_dir: true
-  #     nav_repos:
-  #       - name: kubernetes-docs
-  #         import_url: https://github.com/kubernetes/website/?branch=main&edit_uri=/blob/main/
-  #         imports: [
-  #           /README.md
-  #         ]
-nav:
-  - Home: index.md
-  - Resources: resources.md
-  - About: about.md
- 
+  #- multirepo: # https://github.com/jdoiro3/mkdocs-multirepo-plugin
+  #    cleanup: true
+  #    keep_docs_dir: true
+  #    repos: # Use this to auto generate all menus and pages based on layout. Must remove nav section
+  #      # https://confluenceslt.web.au.boeing.com/display/BSE/BDA+Software+Engineering+Home
+  #      - section: Engineering
+  #        import_url: https://git.web.boeing.com/keene.m.benedict/my-documentation/?branch=main&edit_uri=/blob/main/
+      
+      # nav_repos:
+      #   - name: wiki
+      #     import_url: https://git.web.boeing.com/keene.m.benedict/my-documentation/?branch=main&edit_uri=/blob/main/
+      #     imports: [
+      #       /docs/*
+      #     ]
+
+# nav: # Only to be used with nav_repos
+#   - Home: index.md
+#   - Resources: resources.md
+#   - Wiki:
+#     - wiki/docs/BDA_Software_Engineering___BDA_Software_Engineering_Home.md
+#   - About: about.md
+
 extra:
   social:
     - icon: fontawesome/solid/paper-plane
@@ -60,4 +71,52 @@ extra:
       link: https://bsf.web.boeing.com/
   repository:
     show_info: true
-    edit_uri: edit/main/docs/  # This is not working
+    edit_uri: edit/main/docs/  # This is not working on self hosted
+
+extra_css:
+  - stylesheets/extra.css
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde

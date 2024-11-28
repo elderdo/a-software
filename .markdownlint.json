@@ -1,0 +1,11 @@
+{
+    "default": true,
+    "MD013": {
+      "line_length": 1000  // Set the maximum line length
+    },
+    "MD007": {
+      "indent": 4  // Set the indentation for unordered lists to 4 spaces
+    },
+    "MD033": false  // Disable the inline HTML rule
+
+  }

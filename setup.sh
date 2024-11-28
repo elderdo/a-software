@@ -12,6 +12,14 @@ fi
 export ENV PIP_INDEX_URL="https://$BEMSID:$API_KEY@sres.web.boeing.com/artifactory/api/pypi/pypi-releases/simple"
 
 
+# Add Boeing Cert
+curl https://crl.boeing.com/crl/Boeing%20Basic%20Assurance%20Software%20Issuing%20CA%20G3.crt | openssl x509 -inform DER -out /usr/local/share/ca-certificates/Boeing1.pem
+curl https://crl.boeing.com/crl/Boeing%20Basic%20Assurance%20Software%20Root%20CA%20G2.crt | openssl x509 -inform DER -out /usr/local/share/ca-certificates/Boeing2.pem
+cat /usr/local/share/ca-certificates/Boeing1.pem  /usr/local/share/ca-certificates/Boeing2.pem > /tmp/Boeing.pem
+update-ca-certificates
+git config --global http.sslCAinfo /tmp/Boeing.pem
+
+
 # Create a virtual environment
 python3 -m venv /home/$(whoami)/.venv
 
