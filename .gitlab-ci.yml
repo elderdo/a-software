@@ -24,7 +24,7 @@ stages:  # List of stages for jobs, and their order of execution
 
 megalinter:
   stage: lint
-  image: sres.web.boeing.com:5000/oxsecurity/megalinter-documentation:v8.1.0
+  image: sres.web.boeing.com:5000/oxsecurity/megalinter-documentation:v8.3.0
   variables:
     HTTPS_PROXY: http://www-proxy.web.boeing.com:31060
     HTTP_PROXY: http://www-proxy.web.boeing.com:31060
