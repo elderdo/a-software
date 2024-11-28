@@ -1,6 +1,6 @@
-# BDA DevSecOps Standards
+# BDA Software
 
-This project is designed to build and deploy a GitLab Pages site using Markdown files located in the `docs` folder. The site is automatically generated and hosted on GitLab Pages [here](https://bda-software.pages.boeing.com/tools/bda-devsecops-standards/), allowing for easy sharing and collaboration.
+This project is designed to build and deploy a GitLab Pages site using Markdown files located in the `docs` folder. The site is automatically generated and hosted on GitLab Pages [here](https://bda-software.pages.boeing.com/bda-software/), allowing for easy sharing and collaboration.
 
 ## Overview
 
@@ -13,7 +13,7 @@ Follow the steps below for making updates to the deployed GitLab pages.
 **1. Clone the repository:**
 
 ```bash
-git clone https://git.web.boeing.com/bda-software/tools/bda-devsecops-standards.git
+git clone https://git.web.boeing.com/bda-software/bda-software.git
 
 ```
 
