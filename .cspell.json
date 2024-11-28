@@ -28,13 +28,27 @@
         "ITAR",
         "Kroki",
         "BEMSID",
-        "SRES"
+        "SRES",
+        "UPEP",
+        "Visio",
+        "markdownlint",
+        "Gantt",
+        "HCPN",
+        "hcpn",
+        "WSSO",
+        "GSEP",
+        "Codeco",
+        "IDAP",
+        "topleveldomain",
+        "Venify",
+        "Vbrick"
     ],
     "ignorePaths": [
         ".gitlab-ci.yml",
         "requirements.txt",
         "mkdocs.yml",
         ".devcontainer/devcontainer.json",
-        "public/**"        
+        "public/**",
+        ".markdownlint.json"     
     ]
 }

@@ -5,7 +5,6 @@ mkdocs-material>=9.5.42
 # Plugins for specific features
 mkdocs-multirepo-plugin  # Combine documentation from multiple repositories
 mkdocs-include-markdown-plugin # lets you embed external Markdown files directly into your docs
-# mkdocs-awesome-pages-plugin # Automatically generate the navigatio
+mkdocs-awesome-pages-plugin # Automatically generate the navigation
+pymdown-extensions # For emojis
 
-# For testing renovate
-diff==2023.12.6
