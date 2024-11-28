@@ -18,8 +18,7 @@
       8000
     ],
     "runArgs": [
-      "--env-file",
-      "${localWorkspaceFolder}/.env"
-    ]
+      "--env-file", "${localWorkspaceFolder}/.env"
+    ],
   }
   
